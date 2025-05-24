@@ -31,21 +31,18 @@
       const color = document.getElementById("colorInput").value;
       document.body.style.backgroundColor = color;
 
-      // Create a dummy element to get computed color value
-      const dummy = document.createElement("div");
+            const dummy = document.createElement("div");
       dummy.style.color = color;
       document.body.appendChild(dummy);
       const rgb = window.getComputedStyle(dummy).color;
       document.body.removeChild(dummy);
 
-      // Extract RGB values
-      const match = rgb.match(/\d+/g);
+            const match = rgb.match(/\d+/g);
       if (match && match.length >= 3) {
         const [r, g, b] = match.map(Number);
         const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 
-        // Change text color based on brightness
-        document.body.style.color = brightness > 128 ? "black" : "white";
+                document.body.style.color = brightness > 128 ? "black" : "white";
       }
     }
   </script>
