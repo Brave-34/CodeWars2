@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Dynamic Background Color</title>
+  <title> Background Color Changer</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -22,27 +22,36 @@
   </style>
 </head>
 <body>
-  <h1>Pick a Background Color</h1>
-  <input type="text" id="colorInput" placeholder="Enter a color (e.g. blue, #ff5733)">
+  <h1>Change a Background Color</h1>
+  <input type="text" id="colorInput" placeholder="Enter a color">
   <button onclick="changeColor()">Change Color</button>
 
   <script>
-    function changeColor() {
-      const color = document.getElementById("colorInput").value;
-      document.body.style.backgroundColor = color;
+    function isValidColor(color) {
+      const s = new Option().style;
+      s.color = color;
+      return s.color !== '';
+    }
 
-            const dummy = document.createElement("div");
+    function changeColor() {
+      const color = document.getElementById("colorInput").value.trim();
+      if (!isValidColor(color)) {
+        alert("Invalid color entered. Please try again.");
+        return;
+      }
+
+      document.body.style.backgroundColor = color;
+      const dummy = document.createElement("div");
       dummy.style.color = color;
       document.body.appendChild(dummy);
       const rgb = window.getComputedStyle(dummy).color;
       document.body.removeChild(dummy);
 
-            const match = rgb.match(/\d+/g);
+      const match = rgb.match(/\d+/g);
       if (match && match.length >= 3) {
         const [r, g, b] = match.map(Number);
         const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-
-                document.body.style.color = brightness > 128 ? "black" : "white";
+        document.body.style.color = brightness > 128 ? "black" : "white";
       }
     }
   </script>
