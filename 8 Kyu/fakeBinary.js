@@ -1,4 +1,4 @@
-function fakeBin(x){
+function fakeBinary(x){
     let result = [];
   for (let i = 0; i < x.length; i++){
     if ( x[i] < 5){
