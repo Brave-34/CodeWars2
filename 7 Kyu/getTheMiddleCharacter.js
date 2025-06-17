@@ -1,7 +1,6 @@
 function getMiddle(s) {
  let length = s.length;
  let char1, char2;
-
 for (let i = 0; i < length; i++){
      if(length % 2 === 0){
      char1 = s[length / 2];
