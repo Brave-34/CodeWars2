@@ -6,10 +6,8 @@ function accum(s) {
     const lowerChar = char.toLowerCase();
     const repeatedLower = lowerChar.repeat(i);
     const part = capitalizedChar + repeatedLower;
-
-    result.push(part);
+  result.push(part);
   }
-
   return result.join('-');
 }
 
